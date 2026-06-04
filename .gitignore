@@ -1,0 +1,7 @@
+# Security: Never upload environment variables!
+.env
+backend/.env
+
+# Python Cache: Faltu system files
+__pycache__/
+*.pyc
