@@ -12,7 +12,7 @@ function App() {
     setResult(null);
 
     try {
-      const response = await fetch('https://ai-database-copilot-fqmm.onrender.comt', {
+      const response = await fetch('https://ai-database-copilot-fqmm.onrender.com/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user_query: query })
