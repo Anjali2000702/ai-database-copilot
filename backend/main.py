@@ -1,8 +1,13 @@
+import sys
+import os
+
+# Add backend directory to path so imports work from root
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import sys
-import os
+
 from sqlalchemy import text # Naya import
 from database import engine # Database connection import karna
 

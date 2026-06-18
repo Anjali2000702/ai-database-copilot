@@ -1,7 +1,18 @@
-from database import engine, Base
-import models
+from database import engine
+from models import Base
 
-print("Creating database tables...")
-# Yeh line automatically saari classes ko dhund kar DB mein tables bana degi
-Base.metadata.create_all(bind=engine)
-print("Tables created successfully!")
+def reset_database():
+    print("🔄 Connecting to Neon Cloud Database...")
+    
+    # 1. Purani tables ko drop/delete karna taaki schema conflict na ho
+    print("🗑️ Dropping old tables (customers, orders) if they exist...")
+    Base.metadata.drop_all(bind=engine)
+    
+    # 2. Nayi structures ke sath saari tables dubara create karna
+    print("🏗️ Creating new Olist E-commerce tables (customers, orders, order_items)...")
+    Base.metadata.create_all(bind=engine)
+    
+    print("✅ Success! New tables created successfully on Neon Cloud!")
+
+if __name__ == "__main__":
+    reset_database()
