@@ -32,7 +32,7 @@ function App() {
       ]);
     } catch (error) {
       console.error(error);
-      setMessages([...newMessages, { sender: 'ai', text: "Error: Backend se connect nahi ho pa raha." }]);
+      setMessages([...newMessages, { sender: 'ai', text: "Error: PROBLEM IN CONNECTING TO THE  BACKEND SERVER(API LIMIT REACHED)." }]);
     } finally {
       setIsLoading(false);
     }
