@@ -3,9 +3,14 @@ from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 
-# 1. API Key Load Karna
-load_dotenv("../backend/.env")
+# 1. API Key Load Karna (Dynamic Absolute Path)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+env_path = os.path.join(current_dir, "..", "backend", ".env")
+load_dotenv(env_path)
+
 api_key = os.getenv("GEMINI_API_KEY")
+if api_key:
+    os.environ["GOOGLE_API_KEY"] = api_key
 
 # 2. Gemini Initialize Karna
 llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", google_api_key=api_key)
@@ -31,9 +36,11 @@ def explain_query(sql_query):
     print("-" * 50)
     print(response.content.strip())
     print("-" * 50)
+    
+    return response.content.strip()
 
-# 5. Test Run
+# 5. Test Run (Now using Real Olist Schema)
 if __name__ == "__main__":
-    # Hum ek safe test query bhej kar check kar rahe hain
-    test_sql = "SELECT SUM(o_totalprice) FROM orders WHERE o_custkey = 1;"
+    # Hum naye Olist database ki query bhej kar check kar rahe hain
+    test_sql = "SELECT SUM(price) FROM order_items WHERE order_id = 'e481f51cbdc54678b7cc49136f2d6af7';"
     explain_query(test_sql)

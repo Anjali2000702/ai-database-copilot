@@ -23,12 +23,12 @@ def is_safe_query(sql_query):
         print(f"❌ SYNTAX ERROR: Invalid SQL generated. Details: {e}")
         return False
 
-# Agent ko test karne ke liye ek dummy run
+# Agent ko test karne ke liye ek dummy run (Now using Real Olist Schema)
 if __name__ == "__main__":
     print("--- Test 1: Safe Query ---")
-    safe_sql = "SELECT SUM(o_totalprice) FROM orders WHERE o_custkey = 1;"
+    safe_sql = "SELECT SUM(price) FROM order_items WHERE order_id = 'e481f51cbdc54678b7cc49136f2d6af7';"
     is_safe_query(safe_sql)
     
     print("\n--- Test 2: Destructive Query ---")
-    danger_sql = "DELETE FROM customers WHERE c_custkey = 1;"
+    danger_sql = "DELETE FROM customers WHERE customer_city = 'sao paulo';"
     is_safe_query(danger_sql)

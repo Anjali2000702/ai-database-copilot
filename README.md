@@ -10,8 +10,8 @@ An end-to-end Full-Stack AI application that allows non-technical business users
 - **⚡ Real-Time Execution:** Safely executes approved queries on the PostgreSQL database and renders the actual data in a dynamic React data table.
 
 ## 🛠️ Tech Stack
-- **Frontend:** React, Vite, CSS
-- **Backend:** Python, FastAPI, SQLAlchemy
+- **Frontend:** React, Vite, CSS3,Axios
+- **Backend:** Python, FastAPI, SQLAlchemy , Uvicorn
 - **AI & Orchestration:** Google Gemini API, LangGraph, LangChain
 - **Machine Learning:** XGBoost, Pandas, Scikit-Learn
 - **Database:** PostgreSQL

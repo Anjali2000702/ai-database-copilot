@@ -46,8 +46,8 @@ def predict_query_cost(sql_query):
     print(f"⏱️ Estimated Execution Time: {predicted_time:.2f} ms")
     return round(float(predicted_time), 2)
 
-# 4. Agent ko Test Karne ke liye ek dummy run
+# 4. Agent ko Test Karne ke liye ek dummy run (Now using Real Olist Schema)
 if __name__ == "__main__":
-    # Ek complex query jisme 1 JOIN aur 1 WHERE condition hai
-    test_sql = "SELECT SUM(o.o_totalprice) FROM orders AS o JOIN customers AS c ON o.o_custkey = c.c_custkey WHERE c.c_name = 'Customer#1'"
+    # Ek complex query jisme 2 JOINs aur 1 WHERE condition hai (Sao Paulo city test)
+    test_sql = "SELECT SUM(oi.price) FROM order_items AS oi JOIN orders AS o ON oi.order_id = o.order_id JOIN customers AS c ON o.customer_id = c.customer_id WHERE LOWER(c.customer_city) = LOWER('sao paulo')"
     predict_query_cost(test_sql)
